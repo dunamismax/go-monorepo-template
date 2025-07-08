@@ -91,39 +91,22 @@ The technology stack for this template is carefully curated to build high-perfor
 
 </details>
 
-<details>
-<summary><h3>Repository Structure (Click to Expand)</h3></summary>
-
-The monorepo is organized into several directories, each with a specific purpose:
-
-```sh
-/
-├── api/                  # API definitions and data access logic
-├── cmd/                  # Main applications (binaries)
-│   ├── demo-cli-tool/
-│   └── demo-http-server/
-├── docs/                 # Supplementary documentation
-├── playground/           # Experimental and single-file Go applications
-├── services/             # Independent microservices
-│   ├── demo-product-service/
-│   └── demo-user-service/
-├── shared/               # Common utilities and types used across the repo
-├── tools/                # Go tools and utilities for development
-├── .env.example
-├── .gitignore
-├── docker-compose.yml
-├── go.mod
-├── go.sum
-├── LICENSE
-├── Makefile
-└── README.md
-```
-
-</details>
-
 ---
 
+## Project Structure
+
+This monorepo is organized into several directories, each with a specific purpose:
+
+- **[`api`](./api)**: Contains API definitions (e.g., OpenAPI/Swagger specs) and generated client/server code.
+- **[`cmd`](./cmd)**: Contains the main applications (entry points) within this monorepo. Each subdirectory is a runnable application.
+- **[`docs`](./docs)**: Houses supplementary documentation for the project.
+- **[`playground`](./playground)**: A directory for experimental code, proofs-of-concept, and single-file Go applications.
+- **[`services`](./services)**: Contains independent microservices, each with its own business logic.
+- **[`shared`](./shared)**: A place for common utilities, types, or libraries that are used across multiple applications or services.
+- **[`tools`](./tools)**: Stores Go-based scripts and utilities used for development and CI/CD tasks.
+
 <details>
+
 <summary><h3>Getting Started (Click to Expand)</h3></summary>
 
 #### 1. Prerequisites
