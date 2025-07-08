@@ -44,17 +44,35 @@ no-dirty:
 # QUALITY CONTROL
 # ==================================================================================== #
 
+## lint: check code formatting
+.PHONY: lint
+lint:
+	@echo "--- Checking Go formatting ---"
+	@test -z "$(shell gofmt -l .)" || (echo "Go files are not formatted. Please run 'go fmt ./...'"\; exit 1)
+
+## vet: run go vet
+.PHONY: vet
+vet:
+	@echo "--- Running go vet ---"
+	@go vet ./...
+
+## vulncheck: run vulnerability check
+.PHONY: vulncheck
+vulncheck:
+	@echo "--- Running govulncheck ---"
+	@go run golang.org/x/vuln/cmd/govulncheck ./...
+
 ## audit: run all quality control checks
 .PHONY: audit
 audit:
 	@echo "--- Running Quality Control Checks ---"
-	go mod tidy -diff
-	go mod verify
-	test -z "$(shell gofmt -l . | grep -v 'tools/tools.go')"
-	go vet ./...
-	go build ./...
-	go run honnef.co/go/tools/cmd/staticcheck -checks=all,-ST1000,-U1000 ./...
-	go run golang.org/x/vuln/cmd/govulncheck ./...
+	@go mod tidy -diff
+	@go mod verify
+	@make lint
+	@make vet
+	@go build ./...
+	@go run honnef.co/go/tools/cmd/staticcheck -checks=all,-ST1000,-U1000 ./...
+	@make vulncheck
 	@echo "--- Quality Control Checks Passed ---"
 
 ## test: run all tests
@@ -90,8 +108,8 @@ build:
 		echo "Error: Application '$(APP)' not found." >&2; \
 		exit 1; \
 	fi
-	@echo "Building $(APP) from ./$(APP_DIR)..."
-	@go build -o=/tmp/bin/$(APP) ./$(APP_DIR)
+	@echo "Building $(APP) from ./$(APP_DIR)/cmd..."
+	@go build -o=/tmp/bin/$(APP) ./$(APP_DIR)/cmd
 
 ## run: run the application
 .PHONY: run
@@ -112,6 +130,25 @@ run/live:
 # OPERATIONS
 # ==================================================================================== #
 
+## migrate/create: create a new migration file
+.PHONY: migrate/create
+migrate/create:
+	@echo "Creating migration file..."
+	@read -p "Enter migration name: " name; \
+	go run github.com/golang-migrate/migrate/v4/cmd/migrate create -ext sql -dir db/migrations -seq $name
+
+## migrate/up: apply all up migrations
+.PHONY: migrate/up
+migrate/up:
+	@echo "Applying migrations..."
+	@go run github.com/golang-migrate/migrate/v4/cmd/migrate -database "${DATABASE_URL}" -path db/migrations up
+
+## migrate/down: apply all down migrations
+.PHONY: migrate/down
+migrate/down:
+	@echo "Reverting migrations..."
+	@go run github.com/golang-migrate/migrate/v4/cmd/migrate -database "${DATABASE_URL}" -path db/migrations down
+
 ## push: push changes to the remote Git repository
 .PHONY: push
 push: confirm audit no-dirty
@@ -125,9 +162,10 @@ production/deploy: confirm audit no-dirty
 		exit 1; \
 	fi
 	@echo "Building $(APP) for production..."
-	@GOOS=linux GOARCH=amd64 go build -ldflags='-s' -o=/tmp/bin/linux_amd64/$(APP) ./$(APP_DIR)
+	@GOOS=linux GOARCH=amd64 go build -ldflags='-s' -o=/tmp/bin/linux_amd64/$(APP) ./$(APP_DIR)/cmd
 	# upx -5 /tmp/bin/linux_amd64/$(APP)
 	# Include additional deployment steps here...
+
 
 
 # ==================================================================================== #

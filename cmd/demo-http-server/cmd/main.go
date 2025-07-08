@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"html/template"
 	"log"
-	"net/http"
-	"os"
+
+	"github.com/spf13/viper"
 )
 
 //go:embed static
@@ -16,10 +16,25 @@ var staticFiles embed.FS
 var templateFiles embed.FS
 
 func main() {
-	port := os.Getenv("PORT")
-	if port == "" {
-		port = "3000"
+	// Set up Viper
+	viper.SetDefault("PORT", "3000")
+	viper.AddConfigPath(".")
+	viper.SetConfigName(".env")
+	viper.SetConfigType("env")
+	viper.AutomaticEnv()
+
+	// Read configuration
+	if err := viper.ReadInConfig(); err != nil {
+		if _, ok := err.(viper.ConfigFileNotFoundError); ok {
+			// Config file not found; ignore error if desired
+			log.Println("No .env file found, using default or environment variables.")
+		} else {
+			// Config file was found but another error was produced
+			log.Fatalf("Error reading config file: %s", err)
+		}
 	}
+
+	port := viper.GetString("PORT")
 
 	mux := http.NewServeMux()
 
