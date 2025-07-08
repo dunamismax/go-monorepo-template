@@ -4,7 +4,7 @@
 
 <p align="center">
   <a href="https://github.com/dunamismax/go-monorepo-template">
-    <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=24&pause=1000&color=00ADD8&center=true&vCenter=true&width=550&lines=Go+Monorepo+Template;A+Solid+Foundation+for+Your+Next+Project;Scalable.++Maintainable.++Efficient." alt="Typing SVG" />
+    <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=24&pause=1000&color=00ADD8&center=true&vCenter=true&width=800&lines=Go+Monorepo+Template.;A+Solid+Foundation+for+Your+Next+Project.;Scalable.++Maintainable.++Efficient." alt="Typing SVG" />
   </a>
 </p>
 
