@@ -79,8 +79,6 @@ This template utilizes a curated set of technologies to ensure a high-quality de
 ├── cmd/
 │   ├── demo-cli-tool/
 │   └── demo-http-server/
-├── demopubliclibrary/
-├── demopubliclibrary2/
 ├── docs/
 ├── playground/
 ├── services/
@@ -96,7 +94,7 @@ This template utilizes a curated set of technologies to ensure a high-quality de
 ├── go.sum
 ├── LICENSE
 ├── Makefile
-└── README.md
+└��─ README.md
 ```
 
 </details>
@@ -109,8 +107,6 @@ This monorepo is organized into several directories, each with a specific purpos
 
 - **[api](./api)**: Contains API definitions and data access logic.
 - **[cmd](./cmd)**: Contains the main applications within this monorepo.
-- **[demopubliclibrary](./demopubliclibrary)**: A demonstration of a public library.
-- **[demopubliclibrary2](./demopubliclibrary2)**: Another example of a public library.
 - **[docs](./docs)**: Contains supplementary documentation.
 - **[playground](./playground)**: A directory for experimental and single-file Go applications.
 - **[services](./services)**: Contains independent microservices.
