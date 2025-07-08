@@ -5,6 +5,7 @@ go 1.24.4
 require (
 	github.com/spf13/viper v1.20.1
 	golang.org/x/crypto v0.39.0
+	golang.org/x/crypto/x509roots/fallback v0.0.0-20250630195050-b3790b8d9143
 	gorm.io/driver/postgres v1.6.0
 	gorm.io/gorm v1.30.0
 )
