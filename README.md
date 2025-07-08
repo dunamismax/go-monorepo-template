@@ -180,7 +180,7 @@ make run
 make run APP=demo-user-service
 
 # Run the demo-cli-tool with the "hello" command
-make run APP=demo-cli-tool -- hello --name "World"
+make run APP=demo-cli-tool ARGS="hello --name World"
 ```
 
 For live reloading during development:

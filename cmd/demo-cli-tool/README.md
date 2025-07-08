@@ -17,22 +17,22 @@ This application is a command-line interface (CLI) tool built with the Go standa
 
 ### Running the CLI
 
-You can run the CLI tool using the project's `Makefile` from the repository root. The `APP` variable specifies that you want to run the `demo-cli-tool`. Any arguments after `--` are passed directly to the application.
+You can run the CLI tool using the project's `Makefile` from the repository root. The `APP` variable specifies that you want to run the `demo-cli-tool`. Any arguments for the `ARGS` variable are passed directly to the application.
 
 ```bash
 # Run the 'hello' subcommand with the default name
-make run APP=demo-cli-tool -- hello
+make run APP=demo-cli-tool ARGS="hello"
 
 # Run the 'hello' subcommand with a custom name
-make run APP=demo-cli-tool -- hello --name "World"
+make run APP=demo-cli-tool ARGS="hello --name World"
 
 # Display help information
-make run APP=demo-cli-tool -- --help
+make run APP=demo-cli-tool ARGS="--help"
 ```
 
 Alternatively, you can run the application directly with `go run`:
 
 ```bash
 # Run the 'hello' subcommand
-go run ./cmd/demo-cli-tool/main.go hello --name "Universe"
+go run ./cmd/demo-cli-tool/cmd/main.go hello --name "Universe"
 ```
