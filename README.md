@@ -97,12 +97,11 @@ The technology stack for this template is carefully curated to build high-perfor
 
 This monorepo is organized into several directories, each with a specific purpose:
 
-- **[`api`](./api)**: Contains API definitions (e.g., OpenAPI/Swagger specs) and generated client/server code.
 - **[`cmd`](./cmd)**: Contains the main applications (entry points) within this monorepo. Each subdirectory is a runnable application.
+- **[`db`](./db)**: Contains database-related files, including migrations.
 - **[`docs`](./docs)**: Houses supplementary documentation for the project.
 - **[`playground`](./playground)**: A directory for experimental code, proofs-of-concept, and single-file Go applications.
 - **[`services`](./services)**: Contains independent microservices, each with its own business logic.
-- **[`shared`](./shared)**: A place for common utilities, types, or libraries that are used across multiple applications or services.
 - **[`tools`](./tools)**: Stores Go-based scripts and utilities used for development and CI/CD tasks.
 
 <details>

@@ -27,7 +27,7 @@ The `Makefile` provides a convenient way to run the applications. The `APP` vari
 make run APP=hello-cli
 
 # Run hello-cli with an argument
-make run APP=hello-cli -- World
+make run APP=hello-cli ARGS="World"
 
 # Run the simple web server
 make run APP=simple-server
@@ -42,15 +42,15 @@ You can also run the applications directly using the `go run` command from withi
 
 ```bash
 # Run the hello-cli application
-go run ./playground/hello-cli/main.go
+go run ./playground/hello-cli/cmd/main.go
 
 # Run hello-cli with an argument
-go run ./playground/hello-cli/main.go World
+go run ./playground/hello-cli/cmd/main.go World
 
 # Run the simple web server
-go run ./playground/simple-server/main.go
+go run ./playground/simple-server/cmd/main.go
 # Server will be available at http://localhost:8081
 
 # Run the self-reading program
-go run ./playground/read-self/main.go
+go run ./playground/read-self/cmd/main.go
 ```
