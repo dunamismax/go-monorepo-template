@@ -6,16 +6,16 @@ This directory contains independent microservices that are part of the larger mo
 
 The `services/` directory is used for:
 
--   **Microservices**: Self-contained, deployable units that perform specific business functions.
--   **API Endpoints**: Services that expose APIs (e.g., REST, gRPC) for communication with other services or frontend applications.
--   **Scalability**: Designed to be independently scalable and deployable.
+- **Microservices**: Self-contained, deployable units that perform specific business functions.
+- **API Endpoints**: Services that expose APIs (e.g., REST, gRPC) for communication with other services or frontend applications.
+- **Scalability**: Designed to be independently scalable and deployable.
 
 ---
 
 ## Services
 
--   **[demo-product-service](./demo-product-service/)**: A demonstration microservice responsible for managing product-related data and operations.
--   **[demo-user-service](./demo-user-service/)**: A microservice dedicated to user management, including authentication and user profile handling.
+- **[demo-product-service](./demo-product-service/)**: A demonstration microservice responsible for managing product-related data and operations.
+- **[demo-user-service](./demo-user-service/)**: A microservice dedicated to user management, including authentication and user profile handling.
 
 ---
 

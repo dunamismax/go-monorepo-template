@@ -4,8 +4,8 @@ This application is a command-line interface (CLI) tool built with the Go standa
 
 ## Features
 
--   A `hello` subcommand that prints a greeting.
--   A `--name` flag to customize the greeting.
+- A `hello` subcommand that prints a greeting.
+- A `--name` flag to customize the greeting.
 
 ---
 
@@ -13,7 +13,7 @@ This application is a command-line interface (CLI) tool built with the Go standa
 
 ### Prerequisites
 
--   Go 1.22+
+- Go 1.22+
 
 ### Running the CLI
 

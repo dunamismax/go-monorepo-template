@@ -136,6 +136,7 @@ Run the following command to replace the placeholder module path with your own:
 find . -type f -name "*.go" -exec sed -i '' 's|github.com/your-username/go-monorepo-template|your-module-path|g' {} +
 sed -i '' 's|github.com/your-username/go-monorepo-template|your-module-path|g' go.mod
 ```
+
 **Note:** Replace `your-module-path` with your actual module path (e.g., `github.com/your-username/your-repo-name`).
 
 #### 4. Set Up Environment

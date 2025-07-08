@@ -4,10 +4,10 @@ This application is a web server built with the Go standard library's `net/http`
 
 The server demonstrates several key concepts:
 
--   Routing with `net/http`.
--   Serving embedded static assets.
--   HTML template rendering.
--   Configuration management with environment variables.
+- Routing with `net/http`.
+- Serving embedded static assets.
+- HTML template rendering.
+- Configuration management with environment variables.
 
 ---
 
@@ -15,7 +15,7 @@ The server demonstrates several key concepts:
 
 ### Prerequisites
 
--   Go 1.22+
+- Go 1.22+
 
 ### Configuration
 
