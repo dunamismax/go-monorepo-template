@@ -1,34 +1,40 @@
-# Stage 1: Build the application binary
-# Use a specific Go version for reproducibility.
-FROM golang:1.24 as build
+# Use a pinned, official Go image for the build stage.
+# Using --platform=$BUILDPLATFORM ensures the base image matches the build architecture.
+# Pinning with a SHA256 hash guarantees reproducibility and security.
+FROM --platform=$BUILDPLATFORM golang:1.24.4-alpine3.22@sha256:68932fa6d4d4059845c8f40ad7e654e626f3ebd3706eef7846f319293ab5cb7a AS build
 
-WORKDIR /build/src
+WORKDIR /usr/local/src/app
 
-# Copy dependency files and download them.
-# This creates a separate cache layer for dependencies.
 COPY go.mod go.sum ./
-RUN go mod download
 
-# Copy the rest of the source code.
-COPY . .
+# Use a cache mount for Go modules to speed up subsequent builds.
+RUN --mount=type=cache,target=/root/go/pkg/mod go mod download
 
-# Build a statically linked and stripped binary.
-# -trimpath removes file system paths from the executable.
-# -ldflags="-s -w" strips debug information.
-# The output is a single binary named 'app'.
-RUN CGO_ENABLED=0 go build -trimpath -ldflags="-s -w" -o app ./cmd/demo-http-server/cmd
+# These ARGs are automatically populated by Docker Buildx from the --platform flag.
+ARG TARGETOS
+ARG TARGETARCH
 
-# Stage 2: Create the final, minimal image
-# Start from a completely empty image.
+COPY ./ ./
+
+# Build the application, mounting both module and build caches.
+# This creates a statically linked binary for the target OS/architecture.
+RUN --mount=type=cache,target=/root/go/pkg/mod --mount=type=cache,target=/root/.cache/go-build \
+    CGO_ENABLED=0 GOOS=${TARGETOS} GOARCH=${TARGETARCH} \
+    go build -trimpath -ldflags="-s -w" -o /usr/local/bin/app ./cmd/demo-http-server/cmd
+
+# --- Final Stage ---
+# Start from a completely empty image for maximum security and minimal size.
 FROM scratch
 
-# Copy the compiled application binary from the build stage.
-COPY --from=build /build/src/app /usr/bin/app
+# Copy the compiled application from the build stage.
+COPY --from=build /usr/local/bin/app /usr/local/bin/app
 
-# Expose the port the server listens on.
-# This is metadata and good practice for consumers of the image.
-EXPOSE 3000
+# Expose the server port, specifying the protocol.
+EXPOSE 3000/tcp
+
+# Run as a non-root user ('nobody') for enhanced security.
+# UID 65534 is standard for the 'nobody' user.
+USER 65534:65534
 
 # Set the entrypoint for the container.
-# This is the command that will be executed when the container starts.
-ENTRYPOINT ["/usr/bin/app"]
+ENTRYPOINT ["/usr/local/bin/app"]
