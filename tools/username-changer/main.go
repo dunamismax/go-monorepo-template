@@ -3,7 +3,6 @@ package main
 import (
 	"bufio"
 	"fmt"
-	"io/ioutil"
 	"os"
 	"path/filepath"
 	"strings"
@@ -44,7 +43,7 @@ func main() {
 		}
 
 		if !info.IsDir() {
-			content, err := ioutil.ReadFile(path)
+			content, err := os.ReadFile(path)
 			if err != nil {
 				return err
 			}
@@ -52,7 +51,7 @@ func main() {
 			newContent := strings.Replace(string(content), "dunamismax", newUsername, -1)
 
 			if string(content) != newContent {
-				err = ioutil.WriteFile(path, []byte(newContent), info.Mode())
+				err = os.WriteFile(path, []byte(newContent), info.Mode())
 				if err != nil {
 					return err
 				}
