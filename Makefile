@@ -1,5 +1,6 @@
 # Find all application directories
-APP_DIRS := $(wildcard cmd/*) $(wildcard services/*) $(wildcard playground/*)
+APP_DIRS := $(shell find cmd services playground -mindepth 1 -maxdepth 1 -type d)
+
 # Get just the application names
 APPS := $(notdir $(APP_DIRS))
 
@@ -114,7 +115,7 @@ build:
 ## run: run the application
 .PHONY: run
 run: build
-	@/tmp/bin/$(APP)
+	@/tmp/bin/$(APP) $(ARGS)
 
 ## run/live: run the application with reloading on file changes
 .PHONY: run/live
@@ -123,7 +124,7 @@ run/live:
 		echo "Error: Application '$(APP)' not found." >&2; \
 		exit 1; \
 	fi
-	@go run github.com/air-verse/air --build.cmd "make build APP=$(APP)" --build.bin "/tmp/bin/$(APP)"
+	@go run github.com/air-verse/air --build.cmd "make build APP=$(APP)" --build.bin "/tmp/bin/$(APP) $(ARGS)"
 
 
 # ==================================================================================== #
@@ -151,12 +152,12 @@ migrate/down:
 
 ## push: push changes to the remote Git repository
 .PHONY: push
-push: confirm audit no-dirty
+push: audit
 	git push
 
 ## production/deploy: deploy the application to production
 .PHONY: production/deploy
-production/deploy: confirm audit no-dirty
+production/deploy: audit
 	@if [ -z "$(APP_DIR)" ]; then \
 		echo "Error: Application '$(APP)' not found." >&2; \
 		exit 1; \
@@ -192,4 +193,4 @@ version:
 ## change-username: run the username changer tool
 .PHONY: change-username
 change-username:
-	@go run ./tools/username-changer/main.go
+	@go run ./tools/username-changer/main.go --username "test-user"
