@@ -11,10 +11,10 @@
 <p align="center">
   <a href="https://github.com/dunamismax/go-monorepo-template/actions/workflows/makefile.yml"><img src="https://github.com/dunamismax/go-monorepo-template/actions/workflows/makefile.yml/badge.svg" alt="Build Status"></a>
   <a href="https://go.dev/"><img src="https://img.shields.io/badge/Language-Go-blue.svg" alt="Language: Go"></a>
-  <a href="https://img.shields.io/github/repo-size/your-username/go-monorepo-template"><img src="https://img.shields.io/github/repo-size/your-username/go-monorepo-template" alt="Repo Size"></a>
+  <a href="https://img.shields.io/github/repo-size/dunamismax/go-monorepo-template"><img src="https://img.shields.io/github/repo-size/dunamismax/go-monorepo-template" alt="Repo Size"></a>
   <a href="https://github.com/dunamismax/go-monorepo-template/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>
   <a href="https://github.com/dunamismax/go-monorepo-template/pulls"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square" alt="PRs Welcome"></a>
-  <a href="https://github.com/dunamismax/go-monorepo-template/stargazers"><img src="https://img.shields.io/github/stars/your-username/go-monorepo-template" alt="GitHub Stars"></a>
+  <a href="https://github.com/dunamismax/go-monorepo-template/stargazers"><img src="https://img.shields.io/github/stars/dunamismax/go-monorepo-template" alt="GitHub Stars"></a>
 </p>
 
 ---
