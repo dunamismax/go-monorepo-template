@@ -7,6 +7,9 @@ import (
 	"log"
 	"net/http"
 
+	// CA bundle for FROM Scratch
+	_ "golang.org/x/crypto/x509roots/fallback"
+
 	"github.com/spf13/viper"
 )
 
