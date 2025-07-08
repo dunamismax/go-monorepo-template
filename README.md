@@ -75,17 +75,23 @@ This template utilizes a curated set of technologies to ensure a high-quality de
 
 ```sh
 /
+├── api/
 ├── cmd/
-│   ├── demo-http-server/
-��   └── demo-cli-tool/
+│   ├── demo-cli-tool/
+│   └── demo-http-server/
+├── demopubliclibrary/
+├── demopubliclibrary2/
 ├── docs/
-├── internal/
-├── pkg/
+├── playground/
 ├── services/
+│   ├── demo-product-service/
 │   └── demo-user-service/
+├── shared/
 ├── tools/
+│   └── username-changer/
 ├── .env.example
 ├── .gitignore
+├── docker-compose.yml
 ├── go.mod
 ├── go.sum
 ├── LICENSE
@@ -101,13 +107,15 @@ This template utilizes a curated set of technologies to ensure a high-quality de
 
 This monorepo is organized into several directories, each with a specific purpose:
 
-- **[docs](./docs)**: Contains supplementary documentation.
+- **[api](./api)**: Contains API definitions and data access logic.
 - **[cmd](./cmd)**: Contains the main applications within this monorepo.
-- **[services](./services)**: Contains independent microservices.
-- **[internal](./internal)**: Houses private, application-specific Go packages.
-- **[pkg](./pkg)**: Contains reusable Go packages designed for external consumption.
-- **[tools](./tools)**: Stores Go tools and utilities used for development.
+- **[demopubliclibrary](./demopubliclibrary)**: A demonstration of a public library.
+- **[demopubliclibrary2](./demopubliclibrary2)**: Another example of a public library.
+- **[docs](./docs)**: Contains supplementary documentation.
 - **[playground](./playground)**: A directory for experimental and single-file Go applications.
+- **[services](./services)**: Contains independent microservices.
+- **[shared](./shared)**: Houses common utilities or types that are used across various components.
+- **[tools](./tools)**: Stores Go tools and utilities used for development.
 
 ---
 
@@ -117,6 +125,7 @@ This monorepo is organized into several directories, each with a specific purpos
 #### 1. Prerequisites
 
 - Go 1.22+
+- Docker (for running services with Docker Compose)
 - A running PostgreSQL instance
 
 #### 2. Clone the Repository
@@ -161,7 +170,11 @@ Update your `.env` file with the correct connection string for your PostgreSQL d
 
 #### 5. Running a Project
 
-To run a project, use the provided `Makefile`. The `APP` variable specifies which application to run.
+To run a project, you can use the provided `Makefile` or `docker-compose`.
+
+**Using Make**
+
+The `APP` variable specifies which application to run.
 
 ```bash
 # Run the demo-http-server (default)
@@ -179,6 +192,14 @@ For live reloading during development:
 ```bash
 # Live-reload the demo-http-server
 make run/live APP=demo-http-server
+```
+
+**Using Docker Compose**
+
+You can also run the `demo-http-server` using Docker Compose:
+
+```bash
+docker-compose up --build
 ```
 
 To see a full list of available commands and applications, run:

@@ -134,10 +134,7 @@ production/deploy: confirm audit no-dirty
 # OTHER
 # ==================================================================================== #
 
-## change-username: run the username changer tool
-.PHONY: change-username
-change-username:
-	@go run ./tools/username-changer/main.go
+
 
 ## clean: remove temporary files
 .PHONY: clean
@@ -153,3 +150,8 @@ clean:
 .PHONY: version
 version:
 	@echo "Not implemented"
+
+## change-username: run the username changer tool
+.PHONY: change-username
+change-username:
+	@go run ./tools/username-changer/main.go

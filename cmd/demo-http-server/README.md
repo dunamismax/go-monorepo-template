@@ -29,9 +29,9 @@ The primary configuration for this application is `PORT`.
 
 ### Running the Server
 
-You can run the server using the project's `Makefile` from the repository root.
+You can run the server using the project's `Makefile` from the repository root or with Docker Compose.
 
-#### Standard Run
+#### Using `make`
 
 This command builds and runs the application.
 
@@ -41,6 +41,15 @@ make run APP=demo-http-server
 ```
 
 The server will start and listen on the port specified in your `.env` file (default is `:3000`). You can access it at [http://localhost:3000](http://localhost:3000).
+
+#### Using Docker Compose
+
+You can also build and run the server as a Docker container.
+
+```bash
+# Build and start the container
+docker-compose up --build
+```
 
 #### Live Reloading
 
