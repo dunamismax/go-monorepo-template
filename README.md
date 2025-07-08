@@ -36,37 +36,60 @@ This template utilizes a curated set of technologies to ensure a high-quality de
 
 ---
 
+This stack is for building self-contained, high-performance Go web applications. It uses the Go standard library with a few key libraries for a minimal-dependency, easy-to-deploy result.
+
 ### **Core Application & CLI**
 
 - **Language:** [**Go**](https://go.dev/doc/) (v1.22+)
+  - A statically typed, compiled language known for performance, concurrency, and single-binary deployments.
 - **Web Router:** [**`net/http`**](https://pkg.go.dev/net/http/)
+  - Go's standard library HTTP server and router for handling web requests.
 - **CLI Framework:** [**`flag`**](https://pkg.go.dev/flag/)
+  - Go's standard library package for parsing command-line flags.
 - **Database ORM:** [**GORM**](https://gorm.io/docs/)
+  - A developer-friendly ORM for database interactions like CRUD, queries, and schema management.
 - **Database Access:** [**`database/sql`**](https://pkg.go.dev/database/sql/)
+  - The standard library's generic SQL interface, providing a stable base for database drivers.
 - **Database Driver (PostgreSQL):** [**`lib/pq`**](https://pkg.go.dev/github.com/lib/pq)
-- **Database Migrations:** **GORM Auto-Migration** & **SQL Files**
+  - A popular and stable PostgreSQL driver for Go that works with `database/sql`.
+- **Database Migrations:** [**`golang-migrate/migrate`**](https://pkg.go.dev/github.com/golang-migrate/migrate/v4)
+  - A dedicated tool that manages database schema changes using versioned SQL files, runnable as a CLI or a library for robust version control.
 
 ### **Developer Experience & Tooling**
 
 - **Package & Environment Management:** [**Go Modules & Toolchain**](https://go.dev/doc/tool/)
+  - Native Go tooling for managing dependencies, builds, and tests.
 - **Linter & Formatter:** [**`go fmt`**](https://pkg.go.dev/cmd/gofmt/) & [**`go vet`**](https://pkg.go.dev/cmd/vet/)
-- **Configuration:** Environment variables and JSON files.
+  - `go fmt` ensures consistent code style; `go vet` finds potential bugs.
+- **Configuration:** [**Viper**](https://pkg.go.dev/github.com/spf13/viper)
+  - A complete configuration solution handling various formats (JSON, TOML, YAML), environment variables, and remote config systems.
 - **Live Reloading:** [**Air**](https://github.com/air-verse/air)
+  - A command-line tool that automatically rebuilds and restarts the app on file changes.
 
 ### **Frontend & User Experience**
 
 - **Client-Side Interactivity:** [**htmx**](https://htmx.org/docs/) (v2.0.0)
+  - A small JavaScript library enabling modern AJAX and partial page updates directly in HTML.
 - **Templating:** [**`html/template`**](https://pkg.go.dev/html/template/)
-- **Forms & Validation:** Manual struct population and methods, with client-side validation using HTML5.
+  - Go's standard library for secure, server-side HTML rendering with automatic XSS protection.
+- **Go/htmx Integration:** **Standard Handlers**
+  - Standard Go HTTP handlers render full pages or partial HTML fragments for htmx.
+- **Forms & Validation:** **Manual Struct Population & Methods**
+  - Form data is manually parsed and validated using methods on Go structs.
+- **Client-Side Validation:** [**HTML5 Validation**](https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation#using_built-in_form_validation)
+  - Uses built-in browser validation for instant feedback on user input.
 
 ### **Authentication**
 
-- **Core Authentication:** [**`golang.org/x/crypto/bcrypt`**](https://pkg.go.dev/golang.org/x/crypto/bcrypt) and JWTs.
+- **Core Authentication:** [**`golang.org/x/crypto/bcrypt`**](https://pkg.go.dev/golang.org/x/crypto/bcrypt) & [**`crypto`**](https://pkg.go.dev/crypto/) Packages
+  - Uses `bcrypt` for secure password hashing and standard crypto packages for session management (e.g., JWTs).
 
 ### **Deployment & Production**
 
 - **Web Server / Reverse Proxy:** [**Caddy**](https://caddyserver.com/docs/) (v2)
+  - A modern web server and reverse proxy with automatic HTTPS.
 - **Asset Management:** [**`embed`**](https://pkg.go.dev/embed/)
+  - Go's standard library package to bundle static assets (CSS, JS, images) into the application binary.
 
 </details>
 
@@ -151,9 +174,9 @@ The script will prompt you for your GitHub username and replace all instances of
 
 If you prefer to make the changes manually, you can use the search and replace feature in your code editor (like VS Code).
 
-1.  Open the project in your editor.
-2.  Search for `dunamismax` across all files.
-3.  Replace all instances with your GitHub username.
+1. Open the project in your editor.
+2. Search for `dunamismax` across all files.
+3. Replace all instances with your GitHub username.
 
 #### 4. Set Up Environment
 
