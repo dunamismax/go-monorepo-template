@@ -10,10 +10,10 @@
 
 <p align="center">
   <a href="https://github.com/dunamismax/go-monorepo-template/actions/workflows/makefile.yml"><img src="https://github.com/dunamismax/go-monorepo-template/actions/workflows/makefile.yml/badge.svg" alt="Build Status"></a>
-  <a href="https://go.dev/"><img src="https://img.shields.io/badge/Language-Go-blue.svg" alt="Language: Go"></a>
-  <a href="https://img.shields.io/github/repo-size/dunamismax/go-monorepo-template"><img src="https://img.shields.io/github/repo-size/dunamismax/go-monorepo-template" alt="Repo Size"></a>
+  <a href="https://go.dev/"><img src="https://img.shields.io/badge/Go-1.22+-00ADD8.svg" alt="Go Version"></a>
+  <img src="https://img.shields.io/github/repo-size/dunamismax/go-monorepo-template" alt="Repo Size">
   <a href="https://github.com/dunamismax/go-monorepo-template/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>
-  <a href="https://github.com/dunamismax/go-monorepo-template/pulls"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square" alt="PRs Welcome"></a>
+  <a href="https://github.com/dunamismax/go-monorepo-template/pulls"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs Welcome"></a>
   <a href="https://github.com/dunamismax/go-monorepo-template/stargazers"><img src="https://img.shields.io/github/stars/dunamismax/go-monorepo-template" alt="GitHub Stars"></a>
 </p>
 
@@ -21,24 +21,22 @@
 
 ## About This Project
 
-This repository is a **Go Monorepo Template**, designed to provide a robust and scalable starting point for your Go projects. It includes a variety of applications and services, a unified build system using a `Makefile`, and a well-defined project structure.
+This repository is a **Go Monorepo Template** designed to provide a robust and scalable starting point for your projects. It includes a well-defined project structure, a unified build system using a `Makefile`, and a curated tech stack perfect for modern web applications, APIs, and command-line tools.
 
-The primary goal of this template is to offer a clean, maintainable, and scalable environment for building modern web applications, APIs, and command-line tools with Go.
+The primary goal is to offer a clean, maintainable, and efficient environment that lets you focus on building features, not boilerplate.
 
 ### Target Environments
 
-All code in this repository is designed to be developed and tested on **macOS** and deployed to **Linux (Ubuntu)**.
+All code is designed to be developed on **macOS** and deployed to **Linux (Ubuntu)**.
 
 <details>
 <summary><h3>Technology Stack (Click to Expand)</h3></summary>
 
-This template utilizes a curated set of technologies to ensure a high-quality development experience and a performant end product.
+The technology stack for this template is carefully curated to build high-performance, self-contained Go web applications. The philosophy is to lean heavily on Go's robust standard library, supplementing it only where necessary with a minimal set of highly-regarded libraries. This approach ensures a high-quality development experience and results in a performant, minimal-dependency application that is simple to deploy and maintain.
 
 ---
 
-This stack is for building self-contained, high-performance Go web applications. It uses the Go standard library with a few key libraries for a minimal-dependency, easy-to-deploy result.
-
-### **Core Application & CLI**
+#### **Core Application & CLI**
 
 - **Language:** [**Go**](https://go.dev/doc/) (v1.22+)
   - A statically typed, compiled language known for performance, concurrency, and single-binary deployments.
@@ -55,7 +53,7 @@ This stack is for building self-contained, high-performance Go web applications.
 - **Database Migrations:** [**`golang-migrate/migrate`**](https://pkg.go.dev/github.com/golang-migrate/migrate/v4)
   - A dedicated tool that manages database schema changes using versioned SQL files, runnable as a CLI or a library for robust version control.
 
-### **Developer Experience & Tooling**
+#### **Developer Experience & Tooling**
 
 - **Package & Environment Management:** [**Go Modules & Toolchain**](https://go.dev/doc/tool/)
   - Native Go tooling for managing dependencies, builds, and tests.
@@ -66,7 +64,7 @@ This stack is for building self-contained, high-performance Go web applications.
 - **Live Reloading:** [**Air**](https://github.com/air-verse/air)
   - A command-line tool that automatically rebuilds and restarts the app on file changes.
 
-### **Frontend & User Experience**
+#### **Frontend & User Experience**
 
 - **Client-Side Interactivity:** [**htmx**](https://htmx.org/docs/) (v2.0.0)
   - A small JavaScript library enabling modern AJAX and partial page updates directly in HTML.
@@ -79,12 +77,12 @@ This stack is for building self-contained, high-performance Go web applications.
 - **Client-Side Validation:** [**HTML5 Validation**](https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation#using_built-in_form_validation)
   - Uses built-in browser validation for instant feedback on user input.
 
-### **Authentication**
+#### **Authentication**
 
 - **Core Authentication:** [**`golang.org/x/crypto/bcrypt`**](https://pkg.go.dev/golang.org/x/crypto/bcrypt) & [**`crypto`**](https://pkg.go.dev/crypto/) Packages
   - Uses `bcrypt` for secure password hashing and standard crypto packages for session management (e.g., JWTs).
 
-### **Deployment & Production**
+#### **Deployment & Production**
 
 - **Web Server / Reverse Proxy:** [**Caddy**](https://caddyserver.com/docs/) (v2)
   - A modern web server and reverse proxy with automatic HTTPS.
@@ -96,20 +94,21 @@ This stack is for building self-contained, high-performance Go web applications.
 <details>
 <summary><h3>Repository Structure (Click to Expand)</h3></summary>
 
+The monorepo is organized into several directories, each with a specific purpose:
+
 ```sh
 /
-├── api/
-├── cmd/
+├── api/                  # API definitions and data access logic
+├── cmd/                  # Main applications (binaries)
 │   ├── demo-cli-tool/
 │   └── demo-http-server/
-├── docs/
-├── playground/
-├── services/
+├── docs/                 # Supplementary documentation
+├── playground/           # Experimental and single-file Go applications
+├── services/             # Independent microservices
 │   ├── demo-product-service/
 │   └── demo-user-service/
-├── shared/
-├── tools/
-│   └── username-changer/
+├── shared/               # Common utilities and types used across the repo
+├── tools/                # Go tools and utilities for development
 ├── .env.example
 ├── .gitignore
 ├── docker-compose.yml
@@ -117,24 +116,10 @@ This stack is for building self-contained, high-performance Go web applications.
 ├── go.sum
 ├── LICENSE
 ├── Makefile
-└��─ README.md
+└── README.md
 ```
 
 </details>
-
----
-
-## Project Overview
-
-This monorepo is organized into several directories, each with a specific purpose:
-
-- **[api](./api)**: Contains API definitions and data access logic.
-- **[cmd](./cmd)**: Contains the main applications within this monorepo.
-- **[docs](./docs)**: Contains supplementary documentation.
-- **[playground](./playground)**: A directory for experimental and single-file Go applications.
-- **[services](./services)**: Contains independent microservices.
-- **[shared](./shared)**: Houses common utilities or types that are used across various components.
-- **[tools](./tools)**: Stores Go tools and utilities used for development.
 
 ---
 
@@ -143,53 +128,49 @@ This monorepo is organized into several directories, each with a specific purpos
 
 #### 1. Prerequisites
 
-- Go 1.22+
-- Docker (for running services with Docker Compose)
-- A running PostgreSQL instance
+- **Go 1.22+**
+- **Docker** & **Docker Compose**
+- **A running PostgreSQL instance** (can be easily started with Docker)
 
 #### 2. Clone the Repository
 
-First, fork this repository. Then, clone your forked repository to your local machine.
+First, **fork** this repository to your own GitHub account. Then, clone your fork to your local machine, replacing `<Your-GitHub-Username>` with your actual username.
 
 ```bash
-git clone https://github.com/dunamismax/go-monorepo-template.git
+git clone https://github.com/<Your-GitHub-Username>/go-monorepo-template.git
 cd go-monorepo-template
 ```
 
 #### 3. Customize for Your Use
 
-This template is configured with the username `dunamismax`. To make it your own, you need to replace this username with your own GitHub username. You can do this in two ways:
+This template is configured with the module path `github.com/dunamismax/go-monorepo-template`. To make it your own, you must replace this path with your own.
 
-**Option 1: Use the Automated Script**
+**Option 1: Use the Automated Script (Recommended)**
 
-This repository includes a tool to automate the process. To run it, use the following command:
+This repository includes a tool to automate the process. It will prompt you for your GitHub username and replace all instances of `dunamismax` accordingly.
 
 ```bash
 make change-username
 ```
 
-The script will prompt you for your GitHub username and replace all instances of `dunamismax` with your input.
-
 **Option 2: Manual Search and Replace**
 
-If you prefer to make the changes manually, you can use the search and replace feature in your code editor (like VS Code).
-
-1. Open the project in your editor.
-2. Search for `dunamismax` across all files.
-3. Replace all instances with your GitHub username.
+Use the search and replace feature in your code editor (like VS Code) to find all instances of `dunamismax` and replace them with your GitHub username.
 
 #### 4. Set Up Environment
+
+Copy the example environment file and update it with your database connection string.
 
 ```bash
 # Copy the example environment file
 cp .env.example .env
 ```
 
-Update your `.env` file with the correct connection string for your PostgreSQL database.
+Now, open `.env` and configure your `DATABASE_URL`.
 
 #### 5. Running a Project
 
-To run a project, you can use the provided `Makefile` or `docker-compose`.
+You can run applications using the provided `Makefile` or `Docker Compose`. For a full list of commands, run `make help`.
 
 **Using Make**
 
@@ -215,16 +196,10 @@ make run/live APP=demo-http-server
 
 **Using Docker Compose**
 
-You can also run the `demo-http-server` using Docker Compose:
+You can also run the `demo-http-server` and a PostgreSQL database using Docker Compose:
 
 ```bash
 docker-compose up --build
-```
-
-To see a full list of available commands and applications, run:
-
-```bash
-make help
 ```
 
 </details>
@@ -233,10 +208,8 @@ make help
 
 ## Contributing
 
-Contributions to this template are welcome! Please feel free to fork the repository, create a feature branch, and open a pull request.
-
----
+Contributions are welcome! Please feel free to fork the repository, create a feature branch, and open a pull request.
 
 ## License
 
-This repository is licensed under the **MIT License**. See the `LICENSE` file for more details.
+This project is licensed under the **MIT License**. See the `LICENSE` file for more details.
