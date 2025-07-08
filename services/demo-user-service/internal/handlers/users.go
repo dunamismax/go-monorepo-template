@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/your-username/go-monorepo-template/services/demo-user-service/internal/auth"
+	"github.com/dunamismax/go-monorepo-template/services/demo-user-service/internal/auth"
 	"golang.org/x/crypto/bcrypt"
 	"gorm.io/gorm"
 )

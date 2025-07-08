@@ -3,18 +3,18 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/your-username/go-monorepo-template">
+  <a href="https://github.com/dunamismax/go-monorepo-template">
     <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=24&pause=1000&color=00ADD8&center=true&vCenter=true&width=550&lines=Go+Monorepo+Template;A+Solid+Foundation+for+Your+Next+Project;Scalable.++Maintainable.++Efficient." alt="Typing SVG" />
   </a>
 </p>
 
 <p align="center">
-  <a href="https://github.com/your-username/go-monorepo-template/actions/workflows/makefile.yml"><img src="https://github.com/your-username/go-monorepo-template/actions/workflows/makefile.yml/badge.svg" alt="Build Status"></a>
+  <a href="https://github.com/dunamismax/go-monorepo-template/actions/workflows/makefile.yml"><img src="https://github.com/dunamismax/go-monorepo-template/actions/workflows/makefile.yml/badge.svg" alt="Build Status"></a>
   <a href="https://go.dev/"><img src="https://img.shields.io/badge/Language-Go-blue.svg" alt="Language: Go"></a>
   <a href="https://img.shields.io/github/repo-size/your-username/go-monorepo-template"><img src="https://img.shields.io/github/repo-size/your-username/go-monorepo-template" alt="Repo Size"></a>
-  <a href="https://github.com/your-username/go-monorepo-template/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>
-  <a href="https://github.com/your-username/go-monorepo-template/pulls"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square" alt="PRs Welcome"></a>
-  <a href="https://github.com/your-username/go-monorepo-template/stargazers"><img src="https://img.shields.io/github/stars/your-username/go-monorepo-template" alt="GitHub Stars"></a>
+  <a href="https://github.com/dunamismax/go-monorepo-template/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>
+  <a href="https://github.com/dunamismax/go-monorepo-template/pulls"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square" alt="PRs Welcome"></a>
+  <a href="https://github.com/dunamismax/go-monorepo-template/stargazers"><img src="https://img.shields.io/github/stars/your-username/go-monorepo-template" alt="GitHub Stars"></a>
 </p>
 
 ---
@@ -124,20 +124,31 @@ This monorepo is organized into several directories, each with a specific purpos
 First, fork this repository. Then, clone your forked repository to your local machine.
 
 ```bash
-git clone https://github.com/your-username/go-monorepo-template.git
+git clone https://github.com/dunamismax/go-monorepo-template.git
 cd go-monorepo-template
 ```
 
-#### 3. Customize the Module Path
+#### 3. Customize for Your Use
 
-Run the following command to replace the placeholder module path with your own:
+This template is configured with the username `dunamismax`. To make it your own, you need to replace this username with your own GitHub username. You can do this in two ways:
+
+**Option 1: Use the Automated Script**
+
+This repository includes a tool to automate the process. To run it, use the following command:
 
 ```bash
-find . -type f -name "*.go" -exec sed -i '' 's|github.com/your-username/go-monorepo-template|your-module-path|g' {} +
-sed -i '' 's|github.com/your-username/go-monorepo-template|your-module-path|g' go.mod
+make change-username
 ```
 
-**Note:** Replace `your-module-path` with your actual module path (e.g., `github.com/your-username/your-repo-name`).
+The script will prompt you for your GitHub username and replace all instances of `dunamismax` with your input.
+
+**Option 2: Manual Search and Replace**
+
+If you prefer to make the changes manually, you can use the search and replace feature in your code editor (like VS Code).
+
+1.  Open the project in your editor.
+2.  Search for `dunamismax` across all files.
+3.  Replace all instances with your GitHub username.
 
 #### 4. Set Up Environment
 

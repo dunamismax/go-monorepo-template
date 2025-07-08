@@ -1,4 +1,4 @@
-module github.com/your-username/go-monorepo-template
+module github.com/dunamismax/go-monorepo-template
 
 go 1.24.4
 

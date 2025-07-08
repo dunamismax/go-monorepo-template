@@ -6,8 +6,8 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/your-username/go-monorepo-template/services/demo-user-service/internal/auth"
-	"github.com/your-username/go-monorepo-template/services/demo-user-service/internal/handlers"
+	"github.com/dunamismax/go-monorepo-template/services/demo-user-service/internal/auth"
+	"github.com/dunamismax/go-monorepo-template/services/demo-user-service/internal/handlers"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )

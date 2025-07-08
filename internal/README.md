@@ -27,7 +27,7 @@ Internal packages are used just like any other Go package, but their import scop
 
 ```go
 import (
-    "github.com/your-username/go-monorepo-template/internal/demo-api/api"
-    "github.com/your-username/go-monorepo-template/internal/sharedinternal"
+    "github.com/dunamismax/go-monorepo-template/internal/demo-api/api"
+    "github.com/dunamismax/go-monorepo-template/internal/sharedinternal"
 )
 ```

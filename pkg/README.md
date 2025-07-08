@@ -27,6 +27,6 @@ Public packages can be imported by any Go project, including those outside this 
 
 ```go
 import (
-    "github.com/your-username/go-monorepo-template/pkg/demopubliclibrary"
+    "github.com/dunamismax/go-monorepo-template/pkg/demopubliclibrary"
 )
 ```
